@@ -1,0 +1,38 @@
+
+#container{
+    display:grid;
+    grid-template-columns: 30% 70%;
+    background-color: dimgrey;
+}   
+
+#small > div{
+    padding: 1rem;
+    margin: 0em;
+}
+#big > div{
+    padding: 1rem;
+    margin: 0em;
+}
+#small{
+    margin-left: 10%;
+    margin-right: 10%;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,1fr);
+    gap:1em;
+}
+
+.stile {
+    padding: 1rem;
+    border-radius: .5em;
+}
+
+
+#big{
+    margin-left: 10%;
+    margin-right: 10%;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: repeat(5,1fr);
+    gap: 0.7em;
+}
