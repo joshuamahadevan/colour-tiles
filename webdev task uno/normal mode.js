@@ -33,9 +33,7 @@ for (let i=0; i<n; i++){
 }
 arr[n-1][n-1]=-1;
 
-const sol=
 
-console.log(arr);
 
 /*going to create the sample and the puzzle part.. 
  I am planning on creating a div for each box and setting their widths
@@ -59,8 +57,9 @@ console.log(arr);
  for (let i=0; i<n; i++){
     for (let j=0; j<n; j++){
        const div1=document.createElement("div");
-       div1.setAttribute('id',`b${i}${j}`);
-       div1.setAttribute('class', 'stile');
+       div1.setAttribute('id',`b ${i} ${j}`);
+       div1.setAttribute('class', 'btile');
+       div1.setAttribute('draggable','True')
        div1.style.background=colours[arr[i][j]]
        big.append(div1);
     }
