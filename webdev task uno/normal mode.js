@@ -66,3 +66,94 @@ console.log(arr);
     }
     
 }
+
+/*lets try to make the swithching part. am gonna try to make only the invisible block move
+and switch background colours whenever we drop it on something. and later i'll try to make
+it such that u can drop it on only specific tiles. lets see how i am going to implement the 
+dragging part.. cya after some yt tutorials. lol*/
+
+
+document.getElementById(`b ${n-1} ${n-1}`).className+=" empty";
+
+
+function dragStart(ev) {
+    let t=ev.target
+    t.className+=" dragged";
+    let reg = /\d+/g;
+    let a=t.id.match();
+    let x=parseInt(a[0]);
+    let y=parseInt(a[1]);
+
+    //first let's tackle the corner cases
+    if(x==0){
+        if(y==0){
+            document.getElementById("b 0 0").className+=" Target";
+            document.getElementById("b 0 1").className+=" Target";
+            document.getElementById("b 1 0").className+=" Target";
+
+        }
+        else if(y==n-1){
+            document.getElementById(`b ${0} ${n-1}`).className+=" Target";  
+            document.getElementById(`b ${0} ${n-2}`).className+=" Target";  
+            document.getElementById(`b ${1} ${n-1}`).className+=" Target";  
+        
+             
+        }
+        else{
+            document.getElementById(`b ${1} ${y}`).className+=" Target";     
+            for (let i=y-1; i<y+2; i++){
+                document.getElementById(`b ${x} ${i}`).className+=" Target";
+            }       
+        }
+    }
+    else if(x==n-1){
+        if(y==0){
+            document.getElementById(`b ${n-1} ${0}`).className+=" Target";  
+            document.getElementById(`b ${n-1} ${1}`).className+=" Target";  
+            document.getElementById(`b ${n-2} ${0}`).className+=" Target";  
+
+        }
+        else if(y==n-1){
+            document.getElementById(`b ${n-1} ${n-1}`).className+=" Target";  
+            document.getElementById(`b ${n-1} ${n-2}`).className+=" Target";  
+            document.getElementById(`b ${n-2} ${n-1}`).className+=" Target";  
+        
+             
+        }
+        else{
+            document.getElementById(`b ${x-1} ${y}`).className+=" Target";     
+            for (let i=y-1; i<y+2; i++){
+                document.getElementById(`b ${x} ${i}`).className+=" Target";
+            }       
+        }
+    }
+
+    if(y==0){
+            document.getElementById(`b ${x} ${y+1}`).className+=" Target";     
+            for (let i=x-1; i<x+2; i++){
+                document.getElementById(`b ${i} ${y}`).className+=" Target";
+            }       
+        
+    }
+    else if(y==n-1){
+            document.getElementById(`b ${x} ${y-1}`).className+=" Target";     
+            for (let i=x-1; i<x+2; i++){
+                document.getElementById(`b ${i} ${y}`).className+=" Target";
+            }
+    }
+    //corner cases done... i guess
+    //assuming it's done let's select handle the other cases  
+    //the reason am doing somuch is that the script stops executing if there is any uncaught errors and selecting elements that don't exist causes errors. 
+    //i dont know if i can make the program ignore those. but this works. so let go
+    else{
+        for (let i=x-1;i<x+2;i++){
+            document.getElementById(`b ${i} ${y}`).className+=" Target";
+        }
+        document.getElementById(`b ${x} ${y-1}`).className+=" Target";  
+        document.getElementById(`b ${x} ${y+1}`).className+=" Target";
+    }   
+}
+
+function dragEnd(ev){
+
+}
