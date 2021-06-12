@@ -1,6 +1,6 @@
 body{
-    background: rgb(2,0,36);
-    background: linear-gradient(147deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 32%, rgba(0,212,255,1) 100%);
+    background: rgb(192,63,251);
+    background: radial-gradient(circle, rgba(192,63,251,1) 0%, rgba(252,70,107,1) 100%);
 }
 #container{
     justify-items: center;
@@ -12,7 +12,7 @@ body{
 #head{
     grid-column: 1/5;
     grid-row: 1;
-    background-color: goldenrod;
+    background-color: gold;
     padding:20px;
     border-radius: .5rem;
 }
@@ -22,7 +22,7 @@ body{
 }
 #bigwrap{
     border-radius: .5rem;
-    background-color: dimgrey;
+    background-color: #4d4d4d;
     padding: 10px;
     grid-column: 2/4;
     grid-row:4;
@@ -42,7 +42,7 @@ body{
     border-radius: .5rem;
 }
 #small{
-    background-color: dimgrey;
+    background-color: #4d4d4d;
     margin: 0;
     display: grid;
     grid-template-columns: repeat(3,1fr);
@@ -70,4 +70,17 @@ body{
     gap: 0.8em;
     padding: 0.5rem;
     
+}
+.reload{
+    margin:20px;
+    font-size: 3rem;
+    grid-column:1/5;
+    grid-row:5;
+    padding: 10px;
+    background-color: gold;
+    border-radius: .5rem;
+}
+#score{
+    padding:0px 30px;
+    color: #121212;
 }

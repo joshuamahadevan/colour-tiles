@@ -9,7 +9,7 @@ const colours=["#db29ff","#ff0000","#ffff00","#0000ff","#00ff00","#ff8c00"];
 5 - orange
 */
 
-const diff=8; //difficulty (this is the number of swaps that is gonna take place to shuffle the random array)
+const diff=10; //difficulty (this is the number of swaps that is gonna take place to shuffle the random array)
 const small=document.getElementById("small");
 const big=document.getElementById("big");
 
@@ -77,7 +77,7 @@ document.getElementById(`b ${n-1} ${n-1}`).className+=' empty';
 
 //setting up variables for the timer
 var count=0;
-var secs=0
+var secs=0;
 //addASec function gets called every second. this function updates the timer by adding one second to it
 function addASec(){
     secs+=1;
@@ -101,7 +101,13 @@ function checkCompletion(){
         }
     }
     if(flag==m*m){
-        window.location.href="https://youtu.be/dQw4w9WgXcQ";
+        big.style.display="none";
+        const result=document.getElementById("result");
+        document.getElementById("score").innerHTML=`God job! You solved it using ${document.getElementById("count").innerHTML.match(/\d+/g)} moves in ${document.getElementById("time").innerHTML.match(/\d+:\d+/g)} time`;
+        result.style.display="inline block";
+        document.getElementById("bigwrap").style.background='#9bfa73';
+        document.getElementById("count").style.display="none";
+        document.getElementById("time").style.display="none";
     }
 }
 //adding click event listeners to the tiles
@@ -164,4 +170,11 @@ for (let i=0; i<n; i++){
             }
         });
     }
+}
+//creating the reload part
+let q=document.getElementsByClassName("reload");
+for (let i=0; i<q.length; i++){
+    q[i].addEventListener("click", function rld() {
+        document.location.reload();
+    })
 }
