@@ -1,5 +1,4 @@
-const colours=["#ff00ff","#ff0000","#ffff00","#0000ff","#00ff00","#ff8c00"];
-
+const colours=["#db29ff","#ff0000","#ffff00","#0000ff","#00ff00","#ff8c00"];
 /*
 -1 - blank
 0 - violet
@@ -14,33 +13,26 @@ const diff=8; //difficulty (this is the number of swaps that is gonna take place
 const small=document.getElementById("small");
 const big=document.getElementById("big");
 
-
-/*
-n - size of bigger grid
-m - size of smaller grid
-*/
+/* n - size of bigger grid
+m - size of smaller grid */
 const n=5;
 const m=3;
 
+//crearing the n*n array to store our grid
 var arr= new Array(n);
 for (let i=0; i<n; i++){
     arr[i]=new Array(n);
 }
-
+//initialising the n*n array with random values from 0-5
 for (let i=0; i<n; i++){
     for (let j=0; j<n; j++){
         arr[i][j] = Math.floor(Math.random()*6);
     }
 }
+//setting last element to -1 as this is where the bland tile is gonna be
 arr[n-1][n-1]=-1;
 
-
-
-/*going to create the sample and the puzzle part.. 
- I am planning on creating a div for each box and setting their widths
- to the same value in css. let see how it goes*/
-
- /* starting with the small grid */
+//creating the small grid + an array having the corresponding values to check commpletion at the end
 
  let sol=new Array(m);
  for (let i=0; i<m; i++){
@@ -52,27 +44,25 @@ arr[n-1][n-1]=-1;
         div1.style.background=colours[arr[(n-m)/2+i][(n-m)/2+j]];
         sol[i][j]=arr[(n-m)/2+i][(n-m)/2+j];
         small.append(div1);
-     }
-     
+     }   
  }
 
- /*phew. finally the smal grid is done. 
- i'll yoink the same code for the bigger grid*/
-
- //before that lets mix stuff up
+//messing with the n*n array to make it a puzzle.
 
 for (let a=0; a<diff; a++){
     let x1=Math.floor(Math.random()*n);
     let y1=Math.floor(Math.random()*n);
     let x2=Math.floor(Math.random()*n);
     let y2=Math.floor(Math.random()*n);
+    // i want the empty tile to start at the last element. so i am not swapping the values if one oof the randomly selected tile is the last one
     if(!(((x1==n-1) && (y1==n-1))|| ((x2==n-1) && (y2==n-1))) ){
         let v=arr[x1][y1];
         arr[x1][y1]=arr[x2][y2];
         arr[x2][y2]=v;
-    }
-    
+    } 
 }
+
+//now we are all set to generate the bigger grid
 
  for (let i=0; i<n; i++){
     for (let j=0; j<n; j++){
@@ -84,8 +74,11 @@ for (let a=0; a<diff; a++){
     }   
 }
 document.getElementById(`b ${n-1} ${n-1}`).className+=' empty';
+
+//setting up variables for the timer
 var count=0;
 var secs=0
+//addASec function gets called every second. this function updates the timer by adding one second to it
 function addASec(){
     secs+=1;
     let sec=secs%60;
@@ -97,7 +90,7 @@ function addASec(){
     document.getElementById("time").innerHTML=`TIMER - ${min}:${sec}`;
     console.log("timer updated");  
 }
-
+//checkCompletion function checks if the puzzle is solved or not. if it is solved it takes u to a different page :)
 function checkCompletion(){
     let flag=0;
     for ( let i=0; i<m; i++){
@@ -111,10 +104,11 @@ function checkCompletion(){
         window.location.href="https://youtu.be/dQw4w9WgXcQ";
     }
 }
-
+//adding click event listeners to the tiles
 for (let i=0; i<n; i++){
     for (let j=0; j<n; j++){
         document.getElementById(`b ${i} ${j}`).addEventListener("click",function swap(){
+            //start timer on the first click
             if(count==0){
                 setInterval(addASec,1000);
                 console.log("timer started");
@@ -134,8 +128,10 @@ for (let i=0; i<n; i++){
         
                     clicked.className+=" empty";
                     empty.className="btile";  
+                    //increasing the count (number of moves till now) and updating it
                     count+=1;
                     document.getElementById("count").innerHTML=`COUNT : ${count}`;
+                    //checking completion
                     checkCompletion();
                 }
                 else{
@@ -153,8 +149,10 @@ for (let i=0; i<n; i++){
         
                     clicked.className+=" empty";
                     empty.className="btile";
+                    //increasing the count (number of moves till now) and updating it
                     count+=1;
-                    document.getElementById("count").innerHTML=`COUNT : ${count}`;      
+                    document.getElementById("count").innerHTML=`COUNT : ${count}`;    
+                    //checking completion  
                     checkCompletion();
                 }
                 else{
@@ -164,8 +162,6 @@ for (let i=0; i<n; i++){
             else{
                 console.log("invalid");
             }
-        }
-
-        );
+        });
     }
 }
