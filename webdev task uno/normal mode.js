@@ -48,7 +48,6 @@ function updateScoreBoard(){
         scores.push(parseInt(localStorage.key(i)));
     }
     scores.sort();
-    console.log(scores);
     if(localStorage.length<11){
         for (let i=0; i<localStorage.length; i++){
             let newrow=table.insertRow(i+1);
@@ -149,7 +148,6 @@ function start() {
         sec= sec < 10 ? '0'+ sec : sec;
 
         document.getElementById("time").innerHTML=`TIMER - ${min}:${sec}`;
-        console.log("timer updated");  
     }
     //checkCompletion function checks if the puzzle is solved or not. if it is solved it takes u to a different page :)
     function checkCompletion(){
@@ -189,7 +187,6 @@ function start() {
                 //start timer on the first click
                 if(count==0){
                     setInterval(addASec, 1000);
-                    console.log("timer started");
                 }
                 clicked=document.getElementById(`b ${i} ${j}`);
                 empty=document.getElementsByClassName("empty")[0];
@@ -248,7 +245,6 @@ function start() {
                     }
                 }
                 else{
-                    console.log("invalid");
                     let ado=new Audio();
                     ado.src=".\\sounds\\some wierd click.wav";
                     ado.play();
