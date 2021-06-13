@@ -34,6 +34,26 @@ body{
     background-color: gold;
     border-radius: .5rem;
 }
+#hardmode{
+    align-self: center;
+    height: 3rem;
+    grid-column: 2/3;
+    grid-row: 3/4;
+    background-color: gold;
+    border: black 5px solid;
+    padding: 10px;
+    border-radius: .5rem;
+}
+#easymode{
+    align-self: center;
+    height: 3rem;
+    grid-column: 3/4;
+    grid-row: 3/4;
+    background-color: gold;
+    border: black 5px solid;
+    padding: 10px;
+    border-radius: .5rem;
+}
 #time{
     grid-column: 3/5;
     grid-row: 3;
@@ -83,4 +103,45 @@ body{
 #score{
     padding:0px 30px;
     color: #121212;
+}
+#scores{
+    position: relative;
+    grid-column: 1;
+    grid-row: 4;
+    background-color: gold;
+}
+#lb{
+    padding: .3em;
+    width: 100%;
+    border-radius: .5rem;
+    background-color: goldenrod;
+   
+
+    border-collapse: collapse;
+    text-align: center;
+}
+th, td{
+    background-color: goldenrod;
+    border-radius: .5rem;
+    padding: 10px;
+    font-size: large;
+}
+
+
+
+
+@media (max-width: 1400px){
+    #bigwrap{
+        grid-column: 2/5;
+    }
+}
+@media (max-width: 1000px) {
+    #bigwrap{
+        grid-column: 1/5;
+    }
+    #scores{
+        grid-row: 6;
+        grid-column: 1/5;
+    }
+    
 }

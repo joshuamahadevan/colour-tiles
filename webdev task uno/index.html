@@ -7,12 +7,14 @@
     <title>Puzle game</title>
 </head>
 <body>
-    
+
     <div id="container">
         <h1 id="head">COLOUR TILES- HOW FAST CAN YOU GET?</h1>
         <div id="smallwrap">
             <div id="small"></div>
         </div>
+        <button id="hardmode">HARD MODE</button>
+        <button id="easymode">EASY MODE</button>
         <h1 id="count">COUNT - 00</h1>
         <h1 id="time">TIMER - 00:00</h1>
         <div id="bigwrap">
@@ -21,9 +23,19 @@
                 <h1 id='score'></h1>
             </div>
         </div>
-        <button class="reload">RESET</div>
-       
+        <div id="scores">
+            <h1 style="background-color: goldenrod; padding: 10px; border-radius: .5rem;">HIGH SCORES</h1>
+            <table  id= "lb">
+                <tr>
+                    <th>NAME</th>
+                    <th>SCORE</th>
+                </tr>
+                
+            </table>
+        </div>
+        <button class="reload">RESET</div>  
     </div>
+
     
     <script src="normal mode.js"></script>
 </body>
