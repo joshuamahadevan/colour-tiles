@@ -12,6 +12,7 @@ const colours=["#db29ff","#ff0000","#ffff00","#0000ff","#00ff00","#ff8c00"];
 const diff=10; //difficulty (this is the number of swaps that is gonna take place to shuffle the random array)
 const small=document.getElementById("small");
 const big=document.getElementById("big");
+const audio=new Audio();
 
 /* n - size of bigger grid
 m - size of smaller grid */
@@ -75,6 +76,7 @@ for (let a=0; a<diff; a++){
 }
 document.getElementById(`b ${n-1} ${n-1}`).className+=' empty';
 
+
 //setting up variables for the timer
 var count=0;
 var secs=0;
@@ -101,6 +103,8 @@ function checkCompletion(){
         }
     }
     if(flag==m*m){
+        audio.src=".\\sounds\\victory music.mp3";
+        audio.play();
         big.style.display="none";
         const result=document.getElementById("result");
         document.getElementById("score").innerHTML=`God job! You solved it using ${document.getElementById("count").innerHTML.match(/\d+/g)} moves in ${document.getElementById("time").innerHTML.match(/\d+:\d+/g)} time`;
@@ -116,7 +120,7 @@ for (let i=0; i<n; i++){
         document.getElementById(`b ${i} ${j}`).addEventListener("click",function swap(){
             //start timer on the first click
             if(count==0){
-                setInterval(addASec,1000);
+                setInterval(addASec, 1000);
                 console.log("timer started");
             }
             clicked=document.getElementById(`b ${i} ${j}`);
@@ -139,9 +143,14 @@ for (let i=0; i<n; i++){
                     document.getElementById("count").innerHTML=`COUNT : ${count}`;
                     //checking completion
                     checkCompletion();
+                    let ado=new Audio();
+                    ado.src=".\\sounds\\arcade click.wav";
+                    ado.play();
                 }
                 else{
-                    console.log("invalid");
+                    let ado=new Audio();
+                    ado.src=".\\sounds\\some wierd click.wav";
+                    ado.play();
                 }
             }
             else if(parseInt(pos_c[1])==parseInt(pos_e[1])){
@@ -160,13 +169,21 @@ for (let i=0; i<n; i++){
                     document.getElementById("count").innerHTML=`COUNT : ${count}`;    
                     //checking completion  
                     checkCompletion();
+                    let ado=new Audio();
+                    ado.src=".\\sounds\\arcade click.wav";
+                    ado.play();
                 }
                 else{
-                    console.log("invalid");
+                    let ado=new Audio();
+                    ado.src=".\\sounds\\some wierd click.wav";
+                    ado.play();
                 }
             }
             else{
                 console.log("invalid");
+                let ado=new Audio();
+                ado.src=".\\sounds\\some wierd click.wav";
+                ado.play();
             }
         });
     }
@@ -175,6 +192,11 @@ for (let i=0; i<n; i++){
 let q=document.getElementsByClassName("reload");
 for (let i=0; i<q.length; i++){
     q[i].addEventListener("click", function rld() {
-        document.location.reload();
+        let ado=new Audio();
+        ado.src=".\\sounds\\transition sound.wav";
+        ado.play();
+        setTimeout(() => {
+            document.location.reload();            
+        }, 700);
     })
 }
